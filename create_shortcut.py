@@ -5,7 +5,8 @@ import winshell
 desktop = Path(winshell.desktop())
 folder_name = 'PythonProjects'
 documents_path = Path(winshell.folder('CSIDL_PERSONAL')) / folder_name
-venv_interpreter = Path('env/Scripts/jupyter-lab.exe').absolute()
+env_path = documents_path / 'env' 
+venv_interpreter = Path(env_path / 'Scripts/jupyter-lab.exe').absolute()
 link_filepath = desktop / "Jupyter Lab.lnk"
 work = documents_path / 'notebooks'
 icon = Path('./icon.ico').absolute()
@@ -19,7 +20,6 @@ with winshell.shortcut(str(link_filepath)) as link:
 win32_cmd = str(Path(winshell.folder('CSIDL_SYSTEM')) / 'cmd.exe')
 icon = Path('./terminal.ico').absolute()
 link_filepath = desktop / "Python Env.lnk"
-env_path = documents_path / 'env' 
 work = documents_path / 'scripts' 
 arg_str = "/K " + str(env_path / "Scripts" / "activate.bat") + " " + str(env_path) 
 
