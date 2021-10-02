@@ -21,7 +21,7 @@ win32_cmd = str(Path(winshell.folder('CSIDL_SYSTEM')) / 'cmd.exe')
 icon = Path('./terminal.ico').absolute()
 link_filepath = desktop / "Python Env.lnk"
 work = documents_path / 'scripts' 
-arg_str = "/K " + str(env_path / "Scripts" / "activate.bat") + " " + str(env_path) 
+arg_str = "/K " + str(env_path / "Scripts" / "activate.bat").replace(" ", "\\ ") + " " + str(env_path).replace(" ", "\\ ")
 
 with winshell.shortcut(str(link_filepath)) as link:
     link.path = win32_cmd
